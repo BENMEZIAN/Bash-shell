@@ -10,6 +10,16 @@ while [ expression ]
 do
     statement(s)
 done
+
+until [ expression ]
+do
+	statement(s)
+done
+
+select <variable> in <list of items separated by space>
+do
+    ... What to do for each option or with the variable ...
+done
 '
 
 ########## for loop ##########################################
@@ -96,4 +106,52 @@ do
 done
 
 echo -e
+
+########## until loop ##########################################
+
+i=1
+until [ $i -gt 3 ]
+do
+    echo "$i"
+    let i='i+1'
+done
+
+########## until loop ##########################################
+
+PS3="Enter your choice ==> "
+echo "What do you do?"
+ 
+select answer in Student Businessman Professional Fresher
+do
+        case $answer in
+                Student)
+                        echo "You're still studying"
+                        ;;
+                Fresher)
+                        echo "You're new in the job market"
+                        ;;
+                Professional)
+                        echo "You've been a seasoned professional"
+                        ;;
+                Businessman)
+                        echo "Wow you work really hard for sure!"
+                        ;;
+                *)
+                        echo "Well, you need to enter something from the list!"
+                        ;;
+        esac
+done
+---------------------------------- 
+Output:
+1) Student
+2) Businessman
+3) Professional
+4) Fresher
+Enter your choice ==> 3
+You've been a seasoned professional
+Enter your choice ==> 2
+Wow you work really hard for sure!
+Enter your choice ==>
+
+
 
