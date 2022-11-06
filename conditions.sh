@@ -49,7 +49,53 @@ test -d f1.txt ; echo $?
             -a (and)
              ! (not)
 [      -o -a !      ]
-[ $a -lt 100 -a $b -gt 15 ]  
-'
+[ $a -lt 100 -a $b -gt 15 ]
 
+syntax:
+if [ expression ]
+then
+   Statement(s) to be executed if expression is true
+else
+   Statement(s) to be executed if expression is not true
+fi
+
+case word in
+   pattern1) Statement(s) to be executed if pattern1 matches;;
+   pattern2) Statement(s) to be executed if pattern2 matches;;
+   pattern3) Statement(s) to be executed if pattern3 matches;;
+   *) Default condition to be executed;;
+esac
+
+examples:
+############# if condition ########################################################
+echo "If condition"
+
+if [ $# -ne 0 ]
+then
+   echo "$# parametres en ligne de commande"
+else
+   echo "Aucun paramètre"
+   set 10 20 30 40
+fi
+
+echo "Nombre de parametres: $#"
+echo "Deux premiers parametres: arg1=$1 arg2=$2"
+echo "Liste: $*"
+
+############# switch case #########################################################
+
+echo "switch case"
+
+if [ $# -eq 0 ]
+    echo "Usage : ./main.sh arg1 arg2 ..."
+then
+    case $1 in
+        x*) echo "arg1 commence par x" ;;
+        y*) echo "arg1 commence par y" ;;
+        fich[12]) echo "arg1 estfich1 oufich2" ;;
+        *) echo "arg1 commence par n’importe" ;;
+    esac
+    exit 0
+fi
+'
 
