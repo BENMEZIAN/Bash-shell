@@ -68,24 +68,24 @@ echo -e
 
 echo "while loop"
 
-# print integers
-i=1
-while [ "$i" -le 5 ]
+numbers=(1 2 3 4 5 6 7 8 9 10)
+
+i=0
+while [ $i -le ${#numbers[*]} ]  # print array elements with while loop
 do
-    echo -n -e "$i "
-    let i='i + 1'
+  echo -n -e  $i" "
+  let i='i + 1'
 done
 
 echo -e
 
 i=0
-while [ "$i" -le ${#numbers[*]} ]  # print array elements with while loop
+len=${#numbers[*]}  # ${#numbers[@]}
+while [ $i -le $len ]  # print array elements with while loop
 do
-  echo -n -e "$i "
+  echo -n -e  $i" "
   let i='i + 1'
 done
-
-echo -e
 
 i=0
 len=${#characters[@]}
